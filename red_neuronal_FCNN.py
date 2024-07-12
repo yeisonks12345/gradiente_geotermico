@@ -1,11 +1,10 @@
-import numpy as np
 import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_absolute_error, r2_score
-import matplotlib.pyplot as plt
+
 # r2 de 0.3161, MAE 3.1345
 # lectura de datos
 data = pd.read_csv('input_y_dpto.csv',sep=';')
