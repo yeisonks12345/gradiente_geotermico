@@ -8,8 +8,10 @@ st.set_page_config(page_title="App gradiente geotérmico",
                    initial_sidebar_state="auto")
 
 st.title("App que permite estimar el gradiente geotérmico por departamento en Colombia")
-
-datos_geotermicos = pd.read_csv('Datos_departamento.csv',sep=';')
+st.write("A partir de la investigación realizada por; Juan C. Mejía Fragoso,  Manuel A. Flórez, Rocío Bernal Olaya en el paper Predicting the geothermal gradient in Colombia: A machine learning approach, se usan 3306 registros, las varaibles para usadas para estimar el gradiente geotermico son: produndidad de moho, anomalia magnenita, curie depth entre otros, para estimar el potencial geotermico se prueba una red neuronal FCNN (Fully connected neural network), es un tipo de red neuronal artificial donde cada neurona en una capa está conectada a cada neurona en la siguiente capa. Adicionalmente se concatenan los departamentos en Colombia para poder segmentar las zonas de interes de una manera mas intuitiva, para el despliegue se usa la libreria streamlit de python.")
+st.title('Indicaciones para usar la app')
+st.write("En el menú de la izquierda encontrará una lista desplegable por departamento, seleccione el de su interés y la aplicación mostrara una nube de puntos que estiman el gradiente geotermico en Colombia, de igual forma es posible descargar un listado con las coordenadas y el valor númerico del gradiente para mayor detalle.")
+datos_geotermicos = pd.read_csv('Datos_departamento1.csv',)
 lista_deptos= datos_geotermicos['DEPART'].unique().tolist()
 lista_deptos.insert(0,'Todos')
 
@@ -17,7 +19,7 @@ st.sidebar.header('Escoja el departamento de interés: ')
 
 departamentos = st.sidebar.selectbox('',lista_deptos)
 def datos():
-    datos_geotermicos_d = pd.read_csv('Datos_departamento.csv',sep=';')
+    datos_geotermicos_d = pd.read_csv('Datos_departamento1.csv')
     if departamentos == 'Todos':
         return datos_geotermicos_d
     else:
